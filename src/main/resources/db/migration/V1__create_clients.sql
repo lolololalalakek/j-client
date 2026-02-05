@@ -1,0 +1,14 @@
+CREATE TABLE clients (
+    id BIGSERIAL PRIMARY KEY,
+    first_name VARCHAR NOT NULL,
+    last_name VARCHAR NOT NULL,
+    phone_number VARCHAR(15) NOT NULL,
+    email VARCHAR NOT NULL UNIQUE,
+    passport_number VARCHAR(20) NOT NULL,
+    birth_date VARCHAR NOT NULL,
+    adress VARCHAR NOT NULL,
+    pinfl VARCHAR NOT NULL,
+    age INTEGER NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+)

@@ -1,0 +1,48 @@
+package uz.stajirovka.jclient.controller;
+
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import uz.stajirovka.jclient.dto.request.ClientRequestDto;
+import uz.stajirovka.jclient.dto.response.ClientResponseDto;
+import uz.stajirovka.jclient.service.ClientService;
+
+
+
+@RestController
+@RequestMapping("/clients")
+@RequiredArgsConstructor
+@Validated
+public class ClientController {
+
+    private final ClientService clientService;
+
+    @PostMapping
+    public ResponseEntity<ClientResponseDto> createClient(@Valid @RequestBody ClientRequestDto clientRequestDto) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(clientService.createClient(clientRequestDto));
+    }
+
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ClientResponseDto> updateClient(
+        @PathVariable Long id,
+        @Valid @RequestBody ClientRequestDto clientRequestDto) {
+        return ResponseEntity.ok(clientService.updateClient(id, clientRequestDto));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteClient(@PathVariable Long id) {
+    clientService.deleteClient(id);
+    return ResponseEntity.noContent().build();
+    }
+
+}
