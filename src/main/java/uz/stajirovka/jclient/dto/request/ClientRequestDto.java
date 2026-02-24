@@ -21,8 +21,8 @@ public record ClientRequestDto(
     @NotBlank(message = "Passport number is required")
     String passportNumber,
 
-    @NotBlank(message = "Adress is required")
-    String adress,
+    @NotBlank(message = "Address is required")
+    String address,
 
     @NotBlank(message = "Phones number is required")
     String phoneNumber,
@@ -30,7 +30,7 @@ public record ClientRequestDto(
     @NotBlank(message = "Births date is required")
     String birthDate,
 
-    @NotBlank(message = "PINFL  is required")
+    @NotBlank(message = "PINFL is required")
     String PINFL,
 
     @NotNull

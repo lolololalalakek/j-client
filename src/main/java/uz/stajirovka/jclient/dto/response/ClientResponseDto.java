@@ -14,7 +14,7 @@ public record ClientResponseDto(
     String email,
     String passportNumber,
     String birthDate,
-    String adress,
+    String address,
     String PINFL,
     LocalDateTime createdAt,
     LocalDateTime updatedAt

@@ -5,9 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.PastOrPresent;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -34,40 +33,38 @@ public class ClientEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(nullable = false)
+    @Column(name = "first_name", nullable = false)
     String firstName;
 
-    @Column(nullable = false)
+    @Column(name = "last_name", nullable = false)
     String lastName;
 
-    @Column(nullable = false)
+    @Column(name = "phone_number", nullable = false)
     String phoneNumber;
 
     @Column(nullable = false)
     String email;
 
-    @Column(nullable = false)
+    @Column(name = "passport_number",nullable = false)
     String passportNumber;
 
-    @Column(nullable = false)
+    @Column(name = "birth_date", nullable = false)
     String birthDate;
 
     @Column(nullable = false)
-    String adress;
+    String address;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     String PINFL;
 
     @Column(nullable = false)
     Integer age;
 
     @CreationTimestamp
-    @Column(nullable = false, updatable = false)
-    @PastOrPresent
+    @Column(nullable = false)
     LocalDateTime createdAt;
 
     @UpdateTimestamp
     @Column(nullable = false)
-    @PastOrPresent
     LocalDateTime updatedAt;
 }

@@ -5,7 +5,9 @@ import uz.stajirovka.jclient.dto.response.ClientResponseDto;
 
 public interface ClientService {
 
-    ClientResponseDto createClient(ClientRequestDto clientRequestDto);
+    ClientResponseDto findOrCreate(ClientRequestDto clientRequestDto);
+
+    ClientResponseDto getClient(Long id);
 
     ClientResponseDto updateClient(Long id, ClientRequestDto clientRequestDto);
 
